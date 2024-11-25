@@ -34,7 +34,7 @@ jobs:
         password: ${{ secrets.ACR_PASSWORD }}
 
     - name: Build and Push Docker image to ACR
-      run: az acr build --registry ${{ secrets.ACR_NAME }} --image go-app/go-app:latest .
+      run: az acr build --registry ${{ secrets.ACR_NAME }} --image go-app/go-app:${{ github.sha }} .
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,7 +54,9 @@ jobs:
       run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER_NAME }}
 
     - name: Deploy to AKS
-      run: kubectl apply -f go-app-aks-deployment.yaml
+      run: |
+          sed -i "s|winp2000acr.azurecr.io/<IMAGE_NAME>:.*|winp2000acr.azurecr.io/go-app:${{ github.sha }}|" go-app-aks-deployment.yaml
+          kubectl apply -f go-app-aks-deployment.yaml
 
     - name: Verify Deployment
       run: kubectl rollout status deployment/go-app
