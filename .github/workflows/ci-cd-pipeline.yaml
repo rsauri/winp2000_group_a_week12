@@ -15,9 +15,6 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    - name: Log in to Azure using Managed Identity
-      uses: azure/setup-azurecli@v1
-
     - name: Login to Azure using Managed Identity
       run: az login --identity
 
