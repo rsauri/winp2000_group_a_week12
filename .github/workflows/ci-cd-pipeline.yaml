@@ -15,10 +15,17 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    - name: Log in to Azure Container Registry using Managed Identity
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ secrets.ACR_NAME }} # ACR Name (e.g., myregistry.azurecr.io)
+    - name: Log in to Azure using Managed Identity
+        uses: azure/setup-azurecli@v1
+
+    - name: Login to Azure using Managed Identity
+      run: az login --identity
+
+    - name: Set Azure subscription
+      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Log in to ACR using Managed Identity
+      run: az acr login --name ${{ secrets.ACR_NAME }}
 
     - name: Build and Push Docker image to ACR
       run: az acr build --registry ${{ secrets.ACR_NAME }} --image go-app/go-app:latest .
