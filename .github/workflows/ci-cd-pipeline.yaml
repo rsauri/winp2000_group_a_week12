@@ -55,7 +55,7 @@ jobs:
 
     - name: Deploy to AKS
       run: |
-          sed -i "s|winp2000acr.azurecr.io/<IMAGE_NAME>:.*|winp2000acr.azurecr.io/go-app:${{ github.sha }}|" go-app-aks-deployment.yaml
+          sed -i "s|winp2000acr.azurecr.io/go-app:.*|winp2000acr.azurecr.io/go-app:${{ github.sha }}|" go-app-aks-deployment.yaml
           kubectl apply -f go-app-aks-deployment.yaml
 
     - name: Verify Deployment
