@@ -39,7 +39,7 @@ jobs:
       run: az login
 
     - name: Get AKS credentials
-      run: az aks get-credentials --resource-group ${{ secrets.K8S_RESOURCE_GROUP }} --name ${{ secrets.K8S_CLUSTER_NAME }}
+      run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER_NAME }}
 
     - name: Deploy to AKS
       run: kubectl apply -f go-app-aks-deployment.yaml
