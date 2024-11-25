@@ -22,6 +22,9 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
 
+    - name: Login to ACR
+      run: az acr login --name ${{ secrets.ACR_NAME }}
+      
     - name: Build and Push Docker image to ACR
       run: az acr build --registry ${{ secrets.ACR_NAME }} --image go-app/go-app:latest .
 
