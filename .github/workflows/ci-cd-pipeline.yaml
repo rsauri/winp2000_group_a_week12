@@ -35,14 +35,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Azure CLI with Managed Identity
-      uses: azure/setup-azurecli@v1
-
-    - name: Login to Azure using Managed Identity
-      run: az login --identity
-
-    - name: Set Azure subscription
-      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Login 
+      run: az login
 
     - name: Get AKS credentials
       run: az aks get-credentials --resource-group ${{ secrets.K8S_RESOURCE_GROUP }} --name ${{ secrets.K8S_CLUSTER_NAME }}
