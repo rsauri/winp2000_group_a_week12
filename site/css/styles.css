@@ -1,112 +1,52 @@
-/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
 }
 
 header {
     background-color: #4CAF50;
     color: white;
     padding: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     margin: 0;
-    font-size: 2rem;
 }
 
-h3 {
-    font-size: 1.5rem;
-    font-style: italic;
-    margin-top: 5px;
-}
-
-/* Team Section */
 .team {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    margin-top: 20px;
 }
 
 .member {
-    width: 180px; /* Slightly wider width for a more spacious layout */
+    width: 150px; /* Set a fixed width for each member container */
     text-align: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
-}
-
-.member:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
 }
 
 .member img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+    width: 100%; /* Make the image take up the full width of the container */
+    height: 150px; /* Set a fixed height to maintain consistency */
+    object-fit: cover; /* Crop the image to fit within the specified dimensions */
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .member h2 {
     margin-top: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
+    font-size: 1rem;
 }
 
-.member p.role {
-    font-size: 0.9rem;
-    font-style: italic;
-    font-weight: normal;
-    color: #777;
-}
 
-/* Profile Section */
 .profile {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .profile img {
     width: 200px;
-    height: 200px;
     border-radius: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Media Queries for Responsiveness */
-@media screen and (max-width: 768px) {
-    .team {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .member {
-        width: 100%;
-        max-width: 300px; /* Ensure members fit nicely on smaller screens */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    header {
-        padding: 1em 0.5em;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .member img {
-        height: 120px; /* Slightly reduce image size on smaller screens */
-    }
 }
